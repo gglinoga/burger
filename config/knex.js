@@ -1,6 +1,5 @@
 var knex = require('./connection');
 
-
 var knexObj = {
     selectAll: function () {
         console.log('knex selectAll')
@@ -10,8 +9,8 @@ var knexObj = {
             }
             console.log(response);
         }).finally(() => {
-            console.log('done');
-            knex.destroy();
+            // console.log('done');
+            // knex.destroy();
         })
     },
 
@@ -41,4 +40,3 @@ var knexObj = {
     }
 }
 module.exports = knexObj;
-// updateOne(oldBurger, newBurger);

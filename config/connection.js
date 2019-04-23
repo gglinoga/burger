@@ -1,14 +1,22 @@
-const knex = require('knex')({
-    client: 'mysql',
-    connection: {
-        host: 'localhost',
-        user: 'user',
-        password: 'password',
-        database: 'burgers_db'
-    }
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+    host: 'localhost',
+    port: 3306,
+    user: 'user',
+    password: 'password',
+    database: 'burgers_db'
 });
 
-module.exports = knex;
+connection.connect(function(err) {
+    if(err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log('connected as id ' + connection.threadId);
+});
+
+module.exports = connection;
 
 // console.log ('knex select')
 // knex.select().from('burgers').then(function(response, err) {
@@ -18,3 +26,4 @@ module.exports = knex;
 //     console.log('done');
 //     knex.destroy();
 // });
+
